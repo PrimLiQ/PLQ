@@ -55,13 +55,14 @@
             color: #fff;
             font-family: inherit;
             box-sizing: border-box;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .input-field:focus {
             outline: none;
             border-color: var(--prim-teal);
             background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(0, 206, 206, 0.2);
         }
 
         .submit-btn {
@@ -106,15 +107,21 @@
 
     <div class="contact-box">
         <h2>Initiate Inquiry</h2>
-        <!-- Replace YOUR_ID_HERE with your Formspree ID -->
-        <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST">
+        
+        <form action="https://formspree.io/f/meerpnnq" method="POST">
+            <!-- Professional subject line for your notifications -->
+            <input type="hidden" name="_subject" value="New PrimLiQ Mission Inquiry">
+            
+            <!-- Anti-spam "Honeypot" field (Invisible to users) -->
+            <input type="text" name="_gotcha" style="display:none">
+
             <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
             <input type="email" name="email" class="input-field" placeholder="EMAIL ADDRESS" required>
             <textarea name="message" class="input-field" rows="5" placeholder="REASON FOR INQUIRY" required></textarea>
+            
             <button type="submit" class="submit-btn">SUBMIT TO PRIMLIQ</button>
         </form>
 
-        <!-- Scripted link to close the window/tab -->
         <a href="#" onclick="window.close(); return false;" class="back-btn">← CLOSE TAB & RETURN</a>
     </div>
 
