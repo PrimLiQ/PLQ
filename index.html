@@ -209,13 +209,40 @@
         box-shadow: 0 10px 20px rgba(0, 206, 206, 0.2);
         }
 
-        .sticky-action-button {
-        position: -webkit-sticky; /* For Safari */
-        position: sticky;
-        top: 20px; /* Distance from the top of the viewport */
-        z-index: 1000; /* Keeps it above other content */
-        float: right; /* Or use flexbox alignment */
-        }
+  #primal-action-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark to match your header */
+  color: #00e6e6; /* The Cyan/Teal from your code */
+  border: 1px solid #00e6e6; /* Matching Cyan border */
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 4px; 
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease-in-out;
+  pointer-events: none;
+  z-index: 1000;
+  /* Updated shadow with a hint of Cyan glow to match your logo's vibe */
+  box-shadow: 0 0 15px rgba(0, 230, 230, 0.2); 
+}
+
+#primal-action-btn:hover {
+  background-color: #00e6e6; 
+  color: #000; /* Contrast swap on hover */
+  box-shadow: 0 0 25px rgba(0, 230, 230, 0.5); /* Stronger glow on hover */
+}
+
+/* The class we toggle with JS stays the same */
+#primal-action-btn.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
         
     </style>
 </head>
@@ -284,6 +311,29 @@
             <i class="fab fa-tiktok"></i>
         </a>
     </div>
+
+    <a href="#contact" id="primal-action-btn">GET IN TOUCH</a>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const actionBtn = document.querySelector("#primal-action-btn");
+    // This watches the top container (with your logo)
+    const heroSection = document.querySelector(".container"); 
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // When the top section is NOT visible, show the button
+        if (!entry.isIntersecting) {
+          actionBtn.classList.add("is-visible");
+        } else {
+          actionBtn.classList.remove("is-visible");
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(heroSection);
+  });
+</script>
 
     <div class="footer-note">© 2026 PRIMLIQ | ALPHA SERIES | EST. 2024</div>
 
