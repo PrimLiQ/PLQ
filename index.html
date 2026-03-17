@@ -177,25 +177,26 @@
         .social-links {
         display: flex;
         justify-content: center;
-        gap: 2rem;
-        margin-bottom: 1.5rem;
+        align-items: center;
+        gap: 35px;          /* Space between icons */
+    
+        /* THE FIX FOR THE GAP */
+        margin-top: 100px;  /* This pushes the buttons down from the assets */
+        margin-bottom: 60px;/* This pushes the copyright text further down */
+    
+        width: 100%;        /* Ensures it stays centered */
         }
 
-        .social-links a {
-        color: #ffffff; /* White by default */
-        font-size: 1.5rem;
-        transition: color 0.3s ease, transform 0.3s ease;
+.       social-links a {
+        color: #ffffff;
+        font-size: 1.6rem;
         text-decoration: none;
+        transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-        color: #D4AF37; /* Metallic Gold on hover */
-        transform: translateY(-3px);
-        }
-
-        .social-links a:hover {
-        color: var(--prim-teal); /* Matches your website's primary teal color */
-        transform: translateY(-3px);
+        color: var(--prim-teal);
+        transform: translateY(-5px);
         }
 
         .service-card img {
