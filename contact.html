@@ -5,32 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquiry | PrimLiQ</title>
     <style>
-        body { background: #0d0f10; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .contact-box { padding: 40px; border: 1px solid #333; border-radius: 15px; background: #1a1e22; width: 100%; max-width: 400px; text-align: center; }
-        .input-field { width: 100%; padding: 12px; margin-bottom: 15px; background: #222; border: 1px solid #444; color: #fff; box-sizing: border-box; }
-        .submit-btn { width: 100%; padding: 12px; background: #00cece; color: #000; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-        .back-btn { display: block; margin-top: 20px; color: #666; text-decoration: none; font-size: 0.8rem; }
+        :root {
+            --prim-teal: #00cece;
+            --dark-bg: #0d0f10;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at 50% 20%, #1a1e22 0%, #0d0f10 100%);
+            color: #d1d1d1;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #contact-container {
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #fff;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: #fff;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        /* Match the Main Page Button Style */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #fff 0%, #a8a8a8 100%);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--prim-teal);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 206, 206, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-    <div class="contact-box">
+    <div id="contact-container">
         <h2>Initiate Inquiry</h2>
         
-        <!-- DIRECT ACTION FROM YOUR DASHBOARD -->
-        <form action="https://formspree.io/f/meerpnnq" method="POST">
-        <!-- REDIRECT LINE START -->
-        <input type="hidden" name="_next" value="https://yourdomain.com/success.html">
-        <!-- REDIRECT LINE END -->
-
-        <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
-        <input type="email" name="email" class="input-field" placeholder="EMAIL ADDRESS" required>
-        <textarea name="message" class="input-field" rows="5" placeholder="REASON FOR INQUIRY" required></textarea>
-        <button type="submit" class="submit-btn">SUBMIT TO PRIMLIQ</button>
+        <form id="primliq-form" action="https://formspree.io/f/meerpnnq" method="POST">
+            <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
+            <input type="email" name="email" class="input-field" placeholder="EMAIL ADDRESS" required>
+            <textarea name="message" class="input-field" rows="5" placeholder="REASON FOR INQUIRY" required></textarea>
+            <button type="submit" class="submit-btn" id="submit-btn">SUBMIT TO PRIMLIQ</button>
         </form>
 
         <a href="#" onclick="window.close(); return false;" class="back-btn">← CLOSE TAB</a>
     </div>
+
+    <script>
+        const form = document.getElementById("primliq-form");
+        const container = document.getElementById("contact-container");
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById("submit-btn");
+            
+            // UI Feedback during transmission
+            btn.innerText = "TRANSMITTING...";
+            btn.style.background = "#333";
+            btn.style.color = "#888";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                // Instantly swap form for Success Message
+                container.innerHTML = `
+                    <h2 style="color: var(--prim-teal); letter-spacing: 5px;">MISSION RECEIVED</h2>
+                    <p style="color: #888; line-height: 1.6; margin-bottom: 30px;">Your inquiry has been successfully transmitted.<br>Expect strategic engagement shortly.</p>
+                    <button onclick="window.close()" class="submit-btn">CLOSE SESSION</button>
+                `;
+            } else {
+                btn.innerText = "ERROR - RETRY";
+                btn.style.background = "linear-gradient(135deg, #fff 0%, #a8a8a8 100%)";
+                btn.style.color = "#000";
+                btn.disabled = false;
+            }
+        };
+    </script>
 
 </body>
 </html>
