@@ -19,10 +19,9 @@
         
         <!-- DIRECT ACTION FROM YOUR DASHBOARD -->
         <form action="https://formspree.io/f/meerpnnq" method="POST">
-            <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
-            <input type="email" name="email" class="input-field" placeholder="EMAIL ADDRESS" required>
-            <textarea name="message" class="input-field" rows="5" placeholder="REASON FOR INQUIRY" required></textarea>
-            <button type="submit" class="submit-btn">SUBMIT TO PRIMLIQ</button>
+        <input type="hidden" name="_next" value="https://yourdomain.com/success.html">
+        <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
+        ...
         </form>
 
         <a href="#" onclick="window.close(); return false;" class="back-btn">← CLOSE TAB</a>
