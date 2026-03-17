@@ -8,13 +8,12 @@
         body {
             background-color: #0f1113;
             color: #e0e0e0;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 50px 20px;
-            /* Animation for page load */
             animation: fadeIn 1.2s ease-in-out;
         }
 
@@ -33,7 +32,6 @@
             margin-bottom: 30px;
             transition: border 0.3s ease;
         }
-        
         .container:hover { border-color: #555; }
 
         .profile-img {
@@ -46,27 +44,48 @@
             background-color: #333;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         .profile-img:hover { transform: scale(1.1); }
 
         h1 { color: #ffffff; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+        .tagline { font-style: italic; color: #888; margin-bottom: 25px; font-size: 0.9rem; }
         
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             background: #ffffff;
             color: #000000 !important;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 0 rgba(255,255,255,0);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
         .btn:hover { 
-            background: #f0f0f0; 
+            background: #cccccc; 
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin: 50px 0 20px 0;
+            color: #fff;
+            border-bottom: 1px solid #333;
+            width: 100%;
+            max-width: 600px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            max-width: 600px;
+            line-height: 1.8;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .services {
@@ -76,7 +95,6 @@
             max-width: 600px;
             width: 100%;
         }
-
         .service-card {
             padding: 20px;
             border: 1px solid #222;
@@ -84,53 +102,43 @@
             border-radius: 8px;
             transition: all 0.3s ease;
         }
-
         .service-card:hover {
             background: rgba(255, 255, 255, 0.05);
-            border-color: #444;
             transform: translateY(-5px);
+            border-color: #444;
         }
+        .service-card h3 { color: #fff; margin-top: 0; font-size: 0.8rem; letter-spacing: 1px; }
+
+        .footer-note { font-size: 0.75rem; color: #555; margin-top: 40px; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img src="me.jpg" alt="PrimLiQ" class="profile-img">
+        <img src="me.jpg" alt="PrimLiQ Founder" class="profile-img">
         <h1>PrimLiQ</h1>
         <p class="tagline">The definitive fusion of instinct and intellect.</p>
         <a href="mailto:JBworkamazing@gmail.com" class="btn">GET IN TOUCH</a>
     </div>
 
-    <div class="section-title">The Philosophy</div>
+    <div class="section-title">The Mission</div>
     <p class="philosophy-text">
-        Modern brilliance is hollow without ancestral drive. 
-        PrimLiQ exists to bridge that gap, combining the raw, guttural instinct 
-        to succeed with the cold, calculated precision of high-level strategy. 
-        Don't just compete; evolve.
-    </p>
-
-<div class="section-title">The Mission</div>
-    <p class="philosophy-text">
-        At PrimLiQ, we don't believe in choosing between power and precision. 
-        Most people operate on one side of the coin: they either have the raw hustle (Instinct) 
-        or the over-calculated plan (Intellect). 
-        <br><br>
-        We specialize in the <strong>Intersection</strong>. We help high-performers 
-        harness their natural drive and channel it through a tactical framework that ensures 
-        every move serves a larger purpose.
+        Modern brilliance is hollow without ancestral drive. PrimLiQ bridges the gap—combining the raw, guttural instinct to succeed with the cold, calculated precision of high-level strategy.
     </p>
 
     <div class="section-title">The Methodology</div>
     <div class="services">
         <div class="service-card">
             <h3>PHASE 1: INSTINCT</h3>
-            <p>Identifying your core strengths and removing the noise that slows down your natural pace.</p>
+            <p style="font-size: 0.85rem;">Uncovering raw potential and removing the friction that slows your momentum.</p>
         </div>
         <div class="service-card">
             <h3>PHASE 2: INTELLECT</h3>
-            <p>Building the systems and strategy to ensure your drive is focused on the highest-impact goals.</p>
+            <p style="font-size: 0.85rem;">Applying strategic precision to ensure your drive is focused and unbeatable.</p>
         </div>
     </div>
+
+    <div class="footer-note">© 2026 PRIMLIQ | EVOLVE YOUR EDGE</div>
 
 </body>
 </html>
