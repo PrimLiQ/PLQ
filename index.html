@@ -153,7 +153,6 @@
         <img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
         <h1>PrimLiQ</h1>
         <p class="tagline">Primal Drive. Unique Edge. IQ Executed.</p>
-        <!-- Opens Contact in New Tab -->
         <a href="contact.html" class="btn" target="_blank" rel="noopener noreferrer">GET IN TOUCH</a>
     </div>
 
@@ -201,7 +200,6 @@
             <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">INTELLECT</span>
             <h3>Custom Automations</h3>
             <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
-            <!-- Opens Contact in New Tab -->
             <a href="contact.html" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
         </div>
     </div>
@@ -214,23 +212,19 @@
     </div>
 
     <!-- STICKY BUTTON -->
-    <!-- Opens Contact in New Tab -->
     <a href="contact.html" id="primal-action-btn" target="_blank" rel="noopener noreferrer" class="btn">GET IN TOUCH</a>
 
-    <!-- FOOTER -->
     <div class="footer-note">© 2026 PRIMLIQ | ALPHA SERIES | EST. 2024</div>
 
-    <!-- SCRIPTS -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const actionBtn = document.querySelector("#primal-action-btn");
             const heroSection = document.querySelector("#hero-section"); 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // Toggles visibility when the hero section leaves the viewport
                     actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
                 });
-            }, { threshold: 0 });
+            }, { threshold: 0.1 }); // Added a slight threshold for smoother trigger
             observer.observe(heroSection);
         });
     </script>
