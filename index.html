@@ -208,6 +208,14 @@
         border-color: var(--prim-teal);
         box-shadow: 0 10px 20px rgba(0, 206, 206, 0.2);
         }
+
+        .sticky-action-button {
+        position: -webkit-sticky; /* For Safari */
+        position: sticky;
+        top: 20px; /* Distance from the top of the viewport */
+        z-index: 1000; /* Keeps it above other content */
+        float: right; /* Or use flexbox alignment */
+        }
         
     </style>
 </head>
