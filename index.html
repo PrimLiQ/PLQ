@@ -24,24 +24,54 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        h1 { color: #ffffff; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px; }
-        p { font-style: italic; color: #b0b0b0; line-height: 1.6; }
         
-        /* Fixed Button Styling */
+        /* Profile Photo Circle */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-bottom: 20px;
+            object-fit: cover;
+            background-color: #333; /* Dark gray until you add a photo */
+        }
+
+        h1 { color: #ffffff; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+        .tagline { font-style: italic; color: #888; margin-bottom: 25px; font-size: 0.9rem; }
+        
         .btn {
             display: inline-block;
-            margin-top: 25px;
             padding: 12px 30px;
             background: #ffffff;
-            color: #000000 !important; /* Forces text to be black */
+            color: #000000 !important;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: 0.3s;
         }
-        .btn:hover { background: #cccccc; }
+        .btn:hover { background: #cccccc; transform: translateY(-2px); }
 
-        /* Services Section */
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            margin: 40px 0 20px 0;
+            color: #fff;
+            border-bottom: 1px solid #333;
+            width: 100%;
+            max-width: 600px;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .philosophy-text {
+            max-width: 600px;
+            line-height: 1.8;
+            color: #b0b0b0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
         .services {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -54,28 +84,36 @@
             border: 1px solid #222;
             background: rgba(255, 255, 255, 0.01);
             border-radius: 8px;
-            text-align: left;
         }
         .service-card h3 { color: #fff; margin-top: 0; font-size: 0.9rem; letter-spacing: 1px; }
-        .service-card p { font-size: 0.85rem; font-style: normal; margin-bottom: 0; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <img src="me.jpg" alt="PrimLiQ" class="profile-img">
         <h1>PrimLiQ</h1>
-        <p>The definitive fusion of instinct and intellect. Built on a Primal foundation of raw drive, we empower your unique identity through strategic precision.</p>
+        <p class="tagline">The definitive fusion of instinct and intellect.</p>
         <a href="mailto:JBworkamazing@gmail.com" class="btn">GET IN TOUCH</a>
     </div>
 
+    <div class="section-title">The Philosophy</div>
+    <p class="philosophy-text">
+        Modern brilliance is hollow without ancestral drive. 
+        PrimLiQ exists to bridge that gap—combining the raw, guttural instinct 
+        to succeed with the cold, calculated precision of high-level strategy. 
+        Don't just compete; evolve.
+    </p>
+
+    <div class="section-title">Core Pillars</div>
     <div class="services">
         <div class="service-card">
             <h3>INSTINCT</h3>
-            <p>Uncovering raw potential and high-level IQ to drive foundational growth.</p>
+            <p>Raw potential driven by foundational growth.</p>
         </div>
         <div class="service-card">
             <h3>STRATEGY</h3>
-            <p>Precise, intellectual mapping to ensure every move is calculated.</p>
+            <p>Intellectual mapping for calculated moves.</p>
         </div>
     </div>
 
