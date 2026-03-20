@@ -29,7 +29,7 @@
             box-sizing: border-box;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- RESTORED ALPHA NAVIGATION --- */
         .top-nav {
             position: fixed; top: 0; left: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
@@ -46,28 +46,16 @@
         .nav-logo:hover { color: var(--prim-teal); }
 
         .nav-search-container { position: relative; flex-grow: 1; max-width: 400px; margin: 0 30px; }
-        
-        /* UPDATED SEARCH STYLING */
         .nav-search-input {
             width: 100%; padding: 8px 15px 8px 35px; background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px;
-            color: #fff; font-size: 0.8rem; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #fff; font-size: 0.8rem; transition: all 0.3s ease;
         }
-        .nav-search-input:focus {
-            outline: none;
-            border-color: var(--prim-teal);
-            background: rgba(0, 206, 206, 0.05);
-            box-shadow: 0 0 15px rgba(0, 206, 206, 0.2);
-            padding-left: 45px;
-        }
-
         .nav-search-container::before {
             content: '\f002'; font-family: "Font Awesome 5 Free"; font-weight: 900;
             position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
             color: var(--prim-teal); font-size: 0.8rem; opacity: 0.6;
-            transition: 0.3s;
         }
-        .nav-search-container:focus-within::before { opacity: 1; left: 18px; }
 
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; padding: 6px 10px; }
@@ -170,18 +158,17 @@
 <body>
 
     <nav class="top-nav">
-        <a href="/" class="nav-logo">PrimLiQ</a>
+        <a href="index.html" class="nav-logo">PrimLiQ</a>
     
         <div class="nav-search-container">
-            <!-- COOLER PLACEHOLDER -->
-            <input type="text" class="nav-search-input" placeholder="SCAN DATABASE / SEARCH ARMORY..." id="armorySearch">
+            <input type="text" class="nav-search-input" placeholder="SEARCH DATABASE..." id="armorySearch">
         </div>
 
         <div class="nav-links">
-            <!-- UPDATED TO CLEAN URLS -->
-            <a href="about" class="nav-item">About</a>
-            <a href="assets" class="nav-item highlight">Armory</a>
-            <a href="contact" class="nav-item">Contact</a>
+            <!-- Navigation links now open in SAME TAB (target="_blank" removed) -->
+            <a href="about.html" class="nav-item">About</a>
+            <a href="assets.html" class="nav-item highlight">Armory</a>
+            <a href="contact.html" class="nav-item">Contact</a>
         </div>
     </nav>
 
@@ -195,7 +182,7 @@
             <button type="submit" class="submit-btn" id="submit-btn">SUBMIT TO PRIMLIQ</button>
         </form>
 
-        <a href="/" class="back-btn">← BACK TO HOME</a>
+        <a href="index.html" class="back-btn">← BACK TO HOME</a>
     </div>
 
     <!-- Floating Mascot for visual consistency -->
@@ -225,7 +212,7 @@
                     container.innerHTML = `
                         <h2 style="color: var(--prim-teal); letter-spacing: 5px;">MISSION RECEIVED</h2>
                         <p style="color: #888; line-height: 1.6; margin-bottom: 30px;">Your inquiry has been successfully transmitted.<br>Expect strategic engagement shortly.</p>
-                        <a href="/" class="submit-btn" style="text-decoration:none; display:block;">RETURN TO HUB</a>
+                        <a href="index.html" class="submit-btn" style="text-decoration:none; display:block;">RETURN TO HUB</a>
                     `;
                 } else {
                     throw new Error();
@@ -237,10 +224,10 @@
             }
         };
 
-        // Updated Search logic for Clean URLs
+        // Search logic consistency
         document.getElementById('armorySearch').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                window.location.href = 'assets?search=' + encodeURIComponent(e.target.value);
+                window.location.href = 'assets.html?search=' + e.target.value;
             }
         });
     </script>
