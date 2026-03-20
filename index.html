@@ -36,6 +36,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        /* FIX: Increased padding-top to 120px to prevent Nav overlap */
         padding: 120px 20px 60px 20px; 
         animation: fadeIn 1.5s ease-out;
         overflow-x: hidden;
@@ -65,16 +66,12 @@
         box-shadow: 0 0 30px rgba(0, 206, 206, 0.15);
     }
 
-    /* FIX: Logo is now bigger (280px) and centered */
-    .logo-img { 
-        width: 280px; 
-        margin-bottom: 25px; 
-        filter: drop-shadow(0 0 12px rgba(0, 206, 206, 0.4)); 
-    }
+    .logo-img { width: 160px; margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(0, 206, 206, 0.4)); }
 
-    /* FIX: Hiding redundant PrimLiQ text and tagline */
-    h1 { display: none; }
-    .tagline { display: none; }
+    /* FIX: text-transform: none; to allow PrimLiQ casing */
+    h1 { color: #fff; letter-spacing: 6px; text-transform: none; margin-bottom: 5px; font-size: 2.2rem; font-weight: 800; }
+
+    .tagline { color: var(--prim-teal); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 30px; font-size: 0.75rem; }
     
     .btn {
         display: inline-block;
@@ -90,7 +87,7 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    .btn:hover { background: var(--prim-teal); color: #fff !important; transform: scale(1.05); box-shadow: 0 0 206px rgba(0, 206, 206, 0.5); }
+    .btn:hover { background: var(--prim-teal); color: #fff !important; transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 206, 206, 0.5); }
 
     .section-title {
         text-transform: uppercase;
@@ -148,6 +145,11 @@
 
     .footer-note { font-size: 0.7rem; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
 
+    @media (max-width: 480px) {
+        h1 { font-size: 1.8rem; }
+        #primal-action-btn { right: 15px; bottom: 15px; width: calc(100% - 30px); text-align: center; }
+    }
+
     .vault-container {
         max-width: 600px;
         margin: 40px auto;
@@ -198,6 +200,7 @@
         box-shadow: 0 0 15px rgba(0, 206, 206, 0.4);
     }
 
+    /* TOP NAVIGATION BAR */
     .top-nav {
         position: fixed;
         top: 0;
@@ -207,14 +210,15 @@
         justify-content: space-between;
         align-items: center;
         padding: 15px 40px;
-        background: rgba(13, 15, 16, 0.95);
+        background: rgba(13, 15, 16, 0.95); /* Increased opacity slightly for readability */
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        z-index: 9999;
+        z-index: 9999; /* Higher Z-index to ensure it sits above everything */
         box-sizing: border-box;
         border-bottom: 1px solid rgba(0, 206, 206, 0.15);
     }
 
+    /* FIX: text-transform: none; to allow PrimLiQ casing */
     .nav-logo {
         font-weight: 900;
         letter-spacing: 3px;
@@ -261,15 +265,13 @@
         .top-nav { padding: 15px 20px; }
         .nav-links { gap: 10px; }
         .nav-item { font-size: 0.6rem; padding: 5px 8px; }
-        body { padding-top: 100px; }
-        .logo-img { width: 220px; } /* Slightly smaller for mobile */
+        body { padding-top: 100px; } /* Adjust mobile padding */
     }
 </style>
 </head>
 <body>
 
-    <body>
-
+    <!-- TOP NAVIGATION -->
     <nav class="top-nav">
         <a href="#hero-section" class="nav-logo">PrimLiQ</a>
         <div class="nav-links">
@@ -279,21 +281,21 @@
         </div>
     </nav>
 
-    
-<div class="container" id="hero-section">
-        
-<img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
-        
-        
-        
+    <!-- HERO SECTION -->
+    <div class="container" id="hero-section">
+        <img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
+        <h1 style="text-transform: none;">PrimLiQ</h1> <!-- Corrected Casing -->
+        <p class="tagline">Primal Drive. Unique Edge. IQ Executed.</p>
         <a href="contact.html" class="btn" target="_blank" rel="noopener noreferrer">GET IN TOUCH</a>
     </div>
 
+    <!-- MISSION SECTION -->
     <div class="section-title">The Mission</div>
     <p class="philosophy-text">
         Modern brilliance is hollow without ancestral drive. PrimLiQ bridges the gap—combining the <span style="color:var(--prim-teal)">raw, guttural instinct</span> to succeed with the <span style="color:#fff">cold, calculated precision</span> of high-level strategy.
     </p>
 
+    <!-- ROADMAP SECTION -->
     <div class="section-title">The Roadmap</div>
     <div class="services">
         <div class="service-card">
@@ -313,6 +315,7 @@
         </div>
     </div>
 
+    <!-- ASSETS SECTION -->
     <div class="section-title">Digital Assets & Tools</div>
     <div class="services">
         <div class="service-card">
@@ -332,10 +335,10 @@
             <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
             <a href="contact.html" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
         </div>
-    </div>
 
+    <!-- JOIN THE VAULT (LEAD CAPTURE) -->
     <div class="section-title">The Primal Vault</div>
-    <div class="vault-container" style="width: 100%;"> 
+    <div class="vault-container" style="width: 100%;"> <!-- Added width for layout safety -->
         <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px; text-align: center;">
             Get high-level tactical updates, exclusive Notion templates, and the "Alpha Series" roadmap.
         </p>
@@ -346,12 +349,16 @@
         </form>
     </div>
 
+    </div>
+
+    <!-- SOCIALS -->
     <div class="social-links">
         <a href="https://facebook.com/PrimLiQ/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://instagram.com/jbworkamazing/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://tiktok.com/@primliq" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
     </div>
 
+    <!-- STICKY BUTTON -->
     <a href="contact.html" id="primal-action-btn" target="_blank" rel="noopener noreferrer" class="btn">GET IN TOUCH</a>
 
     <div class="footer-note">© 2026 PRIMLIQ | ALPHA SERIES | EST. 2024</div>
@@ -364,7 +371,7 @@
                 entries.forEach(entry => {
                     actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
                 });
-            }, { threshold: 0.1 }); 
+            }, { threshold: 0.1 });
             observer.observe(heroSection);
         });
     </script>
