@@ -225,84 +225,84 @@
         }
 
         /* Top Navigation Bar */
-.top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: rgba(13, 15, 16, 0.8); /* Matches --dark-bg with transparency */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 2000;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+    .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        background: rgba(13, 15, 16, 0.8); /* Matches --dark-bg with transparency */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 2000;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-.nav-logo {
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
+    .nav-logo {
+        font-weight: 900;
+        letter-spacing: 3px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+    }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
+    .nav-links {
+        display: flex;
+        gap: 25px;
+    }
 
-.nav-item {
-    color: var(--prim-silver);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-    padding: 8px 12px;
-    border-radius: 4px;
-}
+    .nav-item {
+        color: var(--prim-silver);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        padding: 8px 12px;
+        border-radius: 4px;
+    }
 
-.nav-item:hover {
-    color: var(--prim-teal);
-    text-shadow: 0 0 8px rgba(0, 206, 206, 0.5);
-}
+    .nav-item:hover {
+        color: var(--prim-teal);
+        text-shadow: 0 0 8px rgba(0, 206, 206, 0.5);
+    }
 
-/* Special Button Style for the Armory */
-.nav-item.highlight {
-    border: 1px solid rgba(0, 206, 206, 0.3);
-    background: rgba(0, 206, 206, 0.05);
-}
+    /* Special Button Style for the Armory */
+    .nav-item.highlight {
+        border: 1px solid rgba(0, 206, 206, 0.3);
+        background: rgba(0, 206, 206, 0.05);
+    }
 
-.nav-item.highlight:hover {
-    background: var(--prim-teal);
-    color: #000;
-    box-shadow: 0 0 15px rgba(0, 206, 206, 0.3);
-}
+    .nav-item.highlight:hover {
+        background: var(--prim-teal);
+        color: #000;
+        box-shadow: 0 0 15px rgba(0, 206, 206, 0.3);
+    }
 
-/* Adjust mobile padding */
-@media (max-width: 480px) {
-    .top-nav { padding: 15px 20px; }
-    .nav-links { gap: 10px; }
-    .nav-item { font-size: 0.6rem; padding: 5px 8px; }
-}
+    /* Adjust mobile padding */
+    @media (max-width: 480px) {
+        .top-nav { padding: 15px 20px; }
+        .nav-links { gap: 10px; }
+        .nav-item { font-size: 0.6rem; padding: 5px 8px; }
+    }
        
     </style>
 </head>
 <body>
 
-    <!-- NEW TOP NAVIGATION -->
+    <!-- NEW TOP NAVIGATION (OPENING IN NEW TABS) -->
     <nav class="top-nav">
-        <a href="#hero-section" class="nav-logo">PrimLiQ</a>
+        <a href="index.html" target="_blank" rel="noopener noreferrer" class="nav-logo">PrimLiQ</a>
         <div class="nav-links">
-            <a href="about.html" class="nav-item">About</a>
-            <a href="assets.html" class="nav-item highlight">The Armory</a>
-            <a href="contact.html" class="nav-item">Contact</a>
+            <a href="about.html" target="_blank" rel="noopener noreferrer" class="nav-item">About</a>
+            <a href="assets.html" target="_blank" rel="noopener noreferrer" class="nav-item highlight">The Armory</a>
+            <a href="contact.html" target="_blank" rel="noopener noreferrer" class="nav-item">Contact</a>
         </div>
     </nav>
 
