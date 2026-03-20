@@ -3,234 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquiry | PrimLiQ</title>
-    <!-- Font Awesome for Search Icon -->
+    <title>PrimLiQ | Primal Drive. IQ Executed.</title>
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <style>
-        :root {
-            --prim-teal: #00cece;
-            --prim-silver: #a8a8a8;
-            --dark-bg: #0d0f10;
-            --glass: rgba(255, 255, 255, 0.03);
-            --neon-glow: 0 0 20px rgba(0, 206, 206, 0.4);
-        }
+    :root {
+        --prim-teal: #00cece;
+        --prim-silver: #a8a8a8;
+        --dark-bg: #0d0f10;
+        --glass: rgba(255, 255, 255, 0.03);
+        --neon-glow: 0 0 20px rgba(0, 206, 206, 0.4);
+    }
 
-        body {
-            background-color: var(--dark-bg);
-            background-image: radial-gradient(circle at 50% 20%, #1a1e22 0%, #0d0f10 100%);
-            color: #d1d1d1;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 100px; /* Space for fixed nav */
-            box-sizing: border-box;
-        }
+    body {
+        background-color: var(--dark-bg);
+        background-image: 
+            radial-gradient(circle at 50% 20%, #1a1e22 0%, #0d0f10 100%),
+            linear-gradient(to right, rgba(0, 206, 206, 0.02) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 206, 206, 0.02) 1px, transparent 1px);
+        background-size: 100% 100%, 50px 50px, 50px 50px;
+        color: #d1d1d1;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 120px 20px 60px 20px; 
+        animation: fadeIn 1.5s ease-out;
+        overflow-x: hidden;
+    }
 
-        /* --- RESTORED ALPHA NAVIGATION --- */
-        .top-nav {
-            position: fixed; top: 0; left: 0; width: 100%;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 40px; background: rgba(13, 15, 16, 0.9);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.25);
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .nav-logo { 
-            font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; font-size: 1.1rem; 
-            text-shadow: 0 0 10px rgba(0, 206, 206, 0.8);
-            transition: 0.3s ease;
-        }
-        .nav-logo:hover { color: var(--prim-teal); }
+    /* --- NAVIGATION MASCOT --- */
+    .nav-mascot {
+        position: fixed;
+        bottom: 30px;
+        left: 40px;
+        width: 100px;
+        z-index: 10000;
+        filter: drop-shadow(var(--neon-glow));
+        animation: floatMascot 4s ease-in-out infinite;
+        pointer-events: none;
+        transition: 0.5s ease;
+    }
 
-        .nav-search-container { position: relative; flex-grow: 1; max-width: 400px; margin: 0 30px; }
-        .nav-search-input {
-            width: 100%; padding: 8px 15px 8px 35px; background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px;
-            color: #fff; font-size: 0.8rem; transition: all 0.3s ease;
-        }
-        .nav-search-container::before {
-            content: '\f002'; font-family: "Font Awesome 5 Free"; font-weight: 900;
-            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-            color: var(--prim-teal); font-size: 0.8rem; opacity: 0.6;
-        }
+    @keyframes floatMascot {
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50% { transform: translateY(-15px) rotate(3deg); }
+    }
 
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; padding: 6px 10px; }
-        .nav-item:hover { color: var(--prim-teal); text-shadow: var(--neon-glow); }
-        .nav-item.highlight { border: 1px solid rgba(0, 206, 206, 0.3); background: rgba(0, 206, 206, 0.05); border-radius: 4px; }
+    /* --- LOGO & CARD ENHANCEMENTS --- */
+    .branding-card {
+        position: relative;
+        padding: 60px 50px; 
+        border: 1px solid rgba(0, 206, 206, 0.2); 
+        border-radius: 20px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        backdrop-filter: blur(20px); 
+        max-width: 650px; width: 100%;
+        text-align: center; margin-bottom: 40px; 
+        box-shadow: 0 0 40px rgba(0,0,0,0.8), inset 0 0 20px rgba(0, 206, 206, 0.05);
+        display: flex; flex-direction: column; align-items: center; box-sizing: border-box;
+        overflow: hidden;
+    }
 
-        /* --- CONTACT CARD --- */
-        #contact-container {
-            padding: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            animation: slideUp 0.8s ease-out;
-        }
+    /* Animated scanning line for the card */
+    .branding-card::after {
+        content: '';
+        position: absolute; top: -100%; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 206, 206, 0.05), transparent);
+        animation: scan 8s linear infinite;
+    }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    @keyframes scan {
+        0% { top: -100%; }
+        100% { top: 100%; }
+    }
 
-        h2 {
-            color: #fff;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-        }
+    .logo-img { 
+        width: 320px; 
+        max-width: 100%; 
+        margin-bottom: 30px; 
+        filter: drop-shadow(0 0 15px rgba(0, 206, 206, 0.5));
+        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .logo-img:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 25px rgba(0, 206, 206, 0.8));
+    }
 
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            color: #fff;
-            box-sizing: border-box;
-            font-family: inherit;
-            transition: 0.3s;
-        }
+    /* --- HUD & TOP NAV (Consistent with image glow) --- */
+    .nav-logo { 
+        font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; font-size: 1.1rem; 
+        text-shadow: 0 0 10px rgba(0, 206, 206, 0.8);
+    }
 
-        .input-field:focus {
-            outline: none;
-            border-color: var(--prim-teal);
-            background: rgba(0, 206, 206, 0.05);
-        }
+    .side-hud {
+        position: fixed; top: 50%; transform: translateY(-50%);
+        width: 120px; height: 400px; display: flex; flex-direction: column;
+        justify-content: space-between; padding: 20px; pointer-events: none;
+        z-index: 10; opacity: 0.3;
+    }
+    .hud-left { left: 40px; border-left: 1px solid var(--prim-teal); }
+    .hud-right { right: 40px; border-right: 1px solid var(--prim-teal); text-align: right; }
+    .hud-line { font-size: 0.6rem; letter-spacing: 3px; color: var(--prim-teal); text-transform: uppercase; font-weight: 900; margin-bottom: 10px; }
 
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #fff 0%, #a8a8a8 100%);
-            color: #000;
-            border: none;
-            border-radius: 4px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
+    .top-nav {
+        position: fixed; top: 0; left: 0; width: 100%;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 12px 40px; background: rgba(13, 15, 16, 0.9);
+        backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.25);
+    }
 
-        .submit-btn:hover {
-            background: var(--prim-teal);
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 206, 206, 0.4);
-            transform: translateY(-2px);
-        }
+    .nav-search-container { position: relative; flex-grow: 1; max-width: 400px; margin: 0 30px; }
+    .nav-search-input {
+        width: 100%; padding: 8px 15px 8px 35px; background: var(--glass);
+        border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px;
+        color: #fff; font-size: 0.8rem; transition: all 0.3s ease;
+    }
+    .nav-search-input:focus { outline: none; border-color: var(--prim-teal); background: rgba(0, 206, 206, 0.05); box-shadow: 0 0 15px rgba(0, 206, 206, 0.1); }
+    .nav-search-container::before {
+        content: '\f002'; font-family: "Font Awesome 5 Free"; font-weight: 900;
+        position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+        color: var(--prim-teal); font-size: 0.8rem; opacity: 0.6;
+    }
 
-        .back-btn {
-            display: inline-block;
-            margin-top: 30px;
-            color: #666;
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-        .back-btn:hover { color: var(--prim-teal); }
+    .nav-links { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
+    .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; padding: 6px 10px; }
+    .nav-item:hover { color: var(--prim-teal); text-shadow: var(--neon-glow); }
+    .nav-item.highlight { border: 1px solid rgba(0, 206, 206, 0.3); background: rgba(0, 206, 206, 0.05); border-radius: 4px; }
 
-        /* --- MASCOT COMPANION --- */
-        .nav-mascot {
-            position: fixed; bottom: 30px; left: 40px; width: 80px;
-            filter: drop-shadow(var(--neon-glow));
-            animation: float 4s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+    .btn {
+        display: inline-block; padding: 16px 40px;
+        background: linear-gradient(135deg, #fff 0%, var(--prim-silver) 100%);
+        color: #000 !important; text-decoration: none; font-weight: 900; border-radius: 4px;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-transform: uppercase; letter-spacing: 2px;
+    }
+    .btn:hover { background: var(--prim-teal); color: #fff !important; transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 206, 206, 0.5); }
+
+    .section-title {
+        text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; margin: 60px 0 30px 0;
+        color: var(--prim-silver); border-bottom: 1px solid rgba(255, 255, 255, 0.1); width: 100%; max-width: 650px; padding-bottom: 15px; text-align: center;
+    }
+
+    .philosophy-text { max-width: 600px; line-height: 1.8; color: #a0a0a0; text-align: center; margin-bottom: 30px; font-size: 1.05rem; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 850px; width: 100%; }
+    
+    .service-card {
+        padding: 30px; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01);
+        border-radius: 12px; transition: 0.3s ease; position: relative; overflow: hidden;
+    }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--prim-teal); opacity: 0.5; }
+    .service-card:hover { background: rgba(0, 206, 206, 0.03); border-color: var(--prim-teal); transform: translateY(-8px); }
+    .service-card h3 { color: #fff; margin-top: 10px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+
+    .vault-container {
+        max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid rgba(0, 206, 206, 0.2);
+        border-radius: 12px; background: rgba(0, 206, 206, 0.02); text-align: center;
+    }
+    .vault-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .vault-input { flex: 1; min-width: 200px; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: #fff; }
+    .vault-btn { padding: 12px 25px; background: var(--prim-teal); color: #000; border: none; border-radius: 4px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+
+    .social-links { display: flex; justify-content: center; gap: 35px; margin: 80px 0; width: 100%; }
+    .social-links a { color: #fff; font-size: 1.5rem; transition: 0.3s; }
+    .social-links a:hover { color: var(--prim-teal); transform: translateY(-5px); }
+
+    #primal-action-btn { position: fixed; bottom: 30px; right: 30px; opacity: 0; transform: translateY(20px); transition: 0.4s; pointer-events: none; z-index: 1000; padding: 12px 25px; font-size: 0.75rem; }
+    #primal-action-btn.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .footer-note { font-size: 0.7rem; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
+
+    @media (max-width: 1024px) { 
+        .side-hud { display: none; } 
+        .nav-mascot { width: 60px; left: 20px; bottom: 20px; }
+    }
+    @media (max-width: 768px) {
+        .nav-search-container { display: none; }
+        .top-nav { padding: 15px 20px; }
+        .logo-img { width: 240px; }
+    }
     </style>
 </head>
 <body>
 
-    <nav class="top-nav">
-        <a href="index.html" class="nav-logo">PrimLiQ</a>
-    
-        <div class="nav-search-container">
-            <input type="text" class="nav-search-input" placeholder="SEARCH DATABASE..." id="armorySearch">
-        </div>
+    <!-- MASCOT COMPANION (Add this to all tabs) -->
+    <img src="mascot.png" alt="PrimLiQ Mascot" class="nav-mascot">
 
+    <div class="side-hud hud-left">
+        <div class="hud-line">System.Status: Active</div>
+        <div class="hud-line">PLQ_Core_v2.0</div>
+        <div class="hud-line">BndW: Optimized</div>
+    </div>
+
+    <div class="side-hud hud-right">
+        <div class="hud-line">Logic.Execute</div>
+        <div class="hud-line">Primal.Instinct</div>
+        <div class="hud-line">Alpha.2026</div>
+    </div>
+
+    <nav class="top-nav">
+        <!-- Home Button Links to main site - New Tab protocol -->
+        <a href="https://primliq.github.io/PLQ/" class="nav-logo" target="_blank">PrimLiQ</a>
+        <div class="nav-search-container">
+            <input type="text" class="nav-search-input" placeholder="SEARCH ASSETS..." id="armorySearch">
+        </div>
         <div class="nav-links">
-            <!-- Navigation links now open in SAME TAB (target="_blank" removed) -->
-            <a href="about.html" class="nav-item">About</a>
-            <a href="assets.html" class="nav-item highlight">Armory</a>
-            <a href="contact.html" class="nav-item">Contact</a>
+            <a href="about.html" class="nav-item" target="_blank" rel="noopener noreferrer">About</a>
+            <a href="assets.html" class="nav-item highlight" target="_blank" rel="noopener noreferrer">Armory</a>
+            <a href="contact.html" class="nav-item" target="_blank" rel="noopener noreferrer">Contact</a>
         </div>
     </nav>
 
-    <div id="contact-container">
-        <h2>Initiate Inquiry</h2>
-        
-        <form id="primliq-form" action="https://formspree.io/f/meerpnnq" method="POST">
-            <input type="text" name="name" class="input-field" placeholder="FULL NAME" required>
-            <input type="email" name="email" class="input-field" placeholder="EMAIL ADDRESS" required>
-            <textarea name="message" class="input-field" rows="5" placeholder="REASON FOR INQUIRY" required></textarea>
-            <button type="submit" class="submit-btn" id="submit-btn">SUBMIT TO PRIMLIQ</button>
-        </form>
-
-        <a href="index.html" class="back-btn">← BACK TO HOME</a>
+    <div class="branding-card" id="main-portal">
+        <img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
+        <a href="contact.html" class="btn" target="_blank" rel="noopener noreferrer">GET IN TOUCH</a>
     </div>
 
-    <!-- Floating Mascot for visual consistency -->
-    <img src="mascot.png" alt="Mascot" class="nav-mascot">
+    <div class="section-title">The Mission</div>
+    <p class="philosophy-text">
+        Modern brilliance is hollow without ancestral drive. PrimLiQ bridges the gap—combining the <span style="color:var(--prim-teal)">raw, guttural instinct</span> to succeed with the <span style="color:#fff">cold, calculated precision</span> of high-level strategy.
+    </p>
+
+    <div class="section-title">The Roadmap</div>
+    <div class="services">
+        <div class="service-card">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">01. AUDIT</span>
+            <h3>INSTINCT</h3>
+            <p style="font-size: 0.85rem; color:#888;">Identifying raw strengths and stripping noise that limits your potential.</p>
+        </div>
+        <div class="service-card">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">02. STRATEGY</span>
+            <h3>INTELLECT</h3>
+            <p style="font-size: 0.85rem; color:#888;">Designing tactical frameworks to channel energy into execution.</p>
+        </div>
+        <div class="service-card" style="grid-column: span 2;">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">03. RESULT</span>
+            <h3>DOMINANCE</h3>
+            <p style="font-size: 0.85rem; color:#888;">Consistent, calculated high-performance merging natural drive with logic.</p>
+        </div>
+    </div>
+
+    <div class="section-title">Digital Assets & Tools</div>
+    <div class="services">
+        <div class="service-card">
+            <img src="armory-preview.png" alt="PrimLiQ Armory" style="width:100%; border-radius:8px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1);">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">COLLECTION</span>
+            <h3>THE ARMORY</h3>
+            <p style="font-size: 0.85rem; color:#888;">Explore our master vault of gamified systems and Notion templates.</p>
+            <a href="assets.html" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">ENTER THE ARMORY</a>
+        </div>
+        <div class="service-card">
+            <div style="width:100%; height:150px; background: rgba(255,255,255,0.05); border-radius:8px; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px dashed #333;">
+                <span style="color:#444; font-size: 0.8rem;">[ DEVELOPMENT ]</span>
+            </div>
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">INTELLECT</span>
+            <h3>Custom Automations</h3>
+            <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
+            <a href="contact.html" target="_blank" rel="noopener noreferrer" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
+        </div>
+    </div>
+
+    <div class="section-title">The Primal Vault</div>
+    <div class="vault-container" style="width: 100%;">
+        <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px;">
+            Get high-level tactical updates and the "Alpha Series" roadmap.
+        </p>
+        <form action="https://formspree.io/f/meerpnnq" method="POST" class="vault-form">
+            <input type="email" name="email" class="vault-input" placeholder="ENTER EMAIL" required>
+            <button type="submit" class="vault-btn">JOIN VAULT</button>
+        </form>
+    </div>
+
+    <div class="social-links">
+        <a href="https://facebook.com/PrimLiQ/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/jbworkamazing/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@primliq" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <a href="contact.html" id="primal-action-btn" target="_blank" rel="noopener noreferrer" class="btn">GET IN TOUCH</a>
+
+    <div class="footer-note">© 2026 PRIMLIQ | ALPHA SERIES | EST. 2024</div>
 
     <script>
-        const form = document.getElementById("primliq-form");
-        const container = document.getElementById("contact-container");
-
-        form.onsubmit = async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById("submit-btn");
+        document.addEventListener("DOMContentLoaded", () => {
+            const actionBtn = document.querySelector("#primal-action-btn");
+            const portalSection = document.querySelector("#main-portal");
+            const mascot = document.querySelector(".nav-mascot");
             
-            btn.innerText = "TRANSMITTING...";
-            btn.style.opacity = "0.7";
-            btn.disabled = true;
-
-            const formData = new FormData(form);
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
+                    // Mascot reacts to scrolling past the branding card
+                    mascot.style.opacity = entry.isIntersecting ? "1" : "0.7";
+                    mascot.style.transform = entry.isIntersecting ? "scale(1)" : "scale(0.8)";
                 });
+            }, { threshold: 0.1 });
+            observer.observe(portalSection);
 
-                if (response.ok) {
-                    container.innerHTML = `
-                        <h2 style="color: var(--prim-teal); letter-spacing: 5px;">MISSION RECEIVED</h2>
-                        <p style="color: #888; line-height: 1.6; margin-bottom: 30px;">Your inquiry has been successfully transmitted.<br>Expect strategic engagement shortly.</p>
-                        <a href="index.html" class="submit-btn" style="text-decoration:none; display:block;">RETURN TO HUB</a>
-                    `;
-                } else {
-                    throw new Error();
+            const searchInput = document.getElementById('armorySearch');
+            const cards = document.querySelectorAll('.service-card');
+
+            // Opens results in new tab if Enter is pressed
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    window.open('assets.html?search=' + searchInput.value, '_blank');
                 }
-            } catch (err) {
-                btn.innerText = "ERROR - RETRY";
-                btn.style.opacity = "1";
-                btn.disabled = false;
-            }
-        };
+            });
 
-        // Search logic consistency
-        document.getElementById('armorySearch').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                window.location.href = 'assets.html?search=' + e.target.value;
-            }
+            searchInput.addEventListener('input', (e) => {
+                const value = e.target.value.toLowerCase();
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').innerText.toLowerCase();
+                    const desc = card.querySelector('p').innerText.toLowerCase();
+                    card.style.display = (title.includes(value) || desc.includes(value)) ? "block" : "none";
+                });
+            });
         });
     </script>
-
 </body>
 </html>
