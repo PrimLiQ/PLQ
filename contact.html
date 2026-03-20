@@ -10,29 +10,100 @@
             --dark-bg: #0d0f10;
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: var(--dark-bg);
             background-image: radial-gradient(circle at 50% 20%, #1a1e22 0%, #0d0f10 100%);
             color: #d1d1d1;
             font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
             padding: 20px;
         }
 
+        /* --- Navigation Optimization --- */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .nav-logo { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.1rem; 
+            text-shadow: 0 0 10px rgba(0, 206, 206, 0.8), 0 0 20px rgba(0, 206, 206, 0.4);
+            transition: 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--prim-teal);
+            text-shadow: 0 0 15px rgba(0, 206, 206, 1), 0 0 30px rgba(0, 206, 206, 0.6);
+        }
+
+        .nav-search-container {
+            flex-grow: 1;
+            max-width: 300px;
+            margin: 0 40px;
+        }
+
+        .nav-search-input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            color: #fff;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            outline: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-item {
+            color: #888;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-item:hover, .nav-item.highlight {
+            color: #fff;
+        }
+
+        /* --- Container & Form --- */
         #contact-container {
             padding: 50px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             max-width: 500px;
             width: 100%;
             text-align: center;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            margin-top: 60px;
         }
 
         h2 {
@@ -51,11 +122,15 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             color: #fff;
-            box-sizing: border-box;
             font-family: inherit;
+            transition: border 0.3s ease;
         }
 
-        /* Match the Main Page Button Style */
+        .input-field:focus {
+            outline: none;
+            border-color: var(--prim-teal);
+        }
+
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -71,11 +146,16 @@
             margin-top: 10px;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             background: var(--prim-teal);
             color: #fff;
             box-shadow: 0 0 20px rgba(0, 206, 206, 0.4);
             transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            cursor: wait;
+            opacity: 0.7;
         }
 
         .back-btn {
@@ -86,39 +166,29 @@
             font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            transition: 0.3s;
         }
 
-        .nav-logo { 
-        font-weight: 900; 
-        letter-spacing: 5px; 
-        color: #fff; 
-        text-decoration: none; 
-        font-size: 1.1rem; 
-        flex-shrink: 0; 
-        text-shadow: 0 0 10px rgba(0, 206, 206, 0.8), 0 0 20px rgba(0, 206, 206, 0.4);
-        transition: 0.3s ease;
+        .back-btn:hover {
+            color: var(--prim-teal);
         }
 
-        .nav-logo:hover {
-        color: var(--prim-teal);
-        text-shadow: 0 0 15px rgba(0, 206, 206, 1), 0 0 30px rgba(0, 206, 206, 0.6);
-        }
+        textarea { resize: none; }
     </style>
 </head>
 <body>
 
-        <nav class="top-nav">
-        <!-- The Home Button -->
+    <nav class="top-nav">
         <a href="index.html" class="nav-logo">PrimLiQ</a>
-    
+        
         <div class="nav-search-container">
             <input type="text" class="nav-search-input" placeholder="SEARCH ASSETS..." id="armorySearch">
         </div>
 
         <div class="nav-links">
-            <a href="about.html" class="nav-item" target="_blank" rel="noopener noreferrer">About</a>
-            <a href="assets.html" class="nav-item highlight" target="_blank" rel="noopener noreferrer">Armory</a>
-            <a href="contact.html" class="nav-item" target="_blank" rel="noopener noreferrer">Contact</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="assets.html" class="nav-item highlight">Armory</a>
+            <a href="contact.html" class="nav-item">Contact</a>
         </div>
     </nav>
 
@@ -132,7 +202,7 @@
             <button type="submit" class="submit-btn" id="submit-btn">SUBMIT TO PRIMLIQ</button>
         </form>
 
-        <a href="#" onclick="window.close(); return false;" class="back-btn">← CLOSE TAB</a>
+        <a href="#" onclick="window.history.back(); return false;" class="back-btn">← PREVIOUS PAGE</a>
     </div>
 
     <script>
@@ -143,27 +213,31 @@
             e.preventDefault();
             const btn = document.getElementById("submit-btn");
             
-            // UI Feedback during transmission
+            // UI Feedback
+            const originalText = btn.innerText;
             btn.innerText = "TRANSMITTING...";
             btn.style.background = "#333";
             btn.style.color = "#888";
             btn.disabled = true;
 
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
 
-            if (response.ok) {
-                // Instantly swap form for Success Message
-                container.innerHTML = `
-                    <h2 style="color: var(--prim-teal); letter-spacing: 5px;">MISSION RECEIVED</h2>
-                    <p style="color: #888; line-height: 1.6; margin-bottom: 30px;">Your inquiry has been successfully transmitted.<br>Expect strategic engagement shortly.</p>
-                    <button onclick="window.close()" class="submit-btn">CLOSE SESSION</button>
-                `;
-            } else {
+                if (response.ok) {
+                    container.innerHTML = `
+                        <h2 style="color: var(--prim-teal); letter-spacing: 5px;">MISSION RECEIVED</h2>
+                        <p style="color: #888; line-height: 1.6; margin-bottom: 30px;">Your inquiry has been successfully transmitted.<br>Expect strategic engagement shortly.</p>
+                        <button onclick="window.location.href='index.html'" class="submit-btn">RETURN TO BASE</button>
+                    `;
+                } else {
+                    throw new Error("Transmission failed");
+                }
+            } catch (err) {
                 btn.innerText = "ERROR - RETRY";
                 btn.style.background = "linear-gradient(135deg, #fff 0%, #a8a8a8 100%)";
                 btn.style.color = "#000";
@@ -171,6 +245,5 @@
             }
         };
     </script>
-
 </body>
 </html>
