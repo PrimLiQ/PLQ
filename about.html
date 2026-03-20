@@ -12,68 +12,121 @@
             --dark-bg: #0d0f10;
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             background-color: var(--dark-bg);
             background-image: radial-gradient(circle at 50% 20%, #1a1e22 0%, #0d0f10 100%);
             color: #d1d1d1;
             font-family: 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding-top: 100px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            padding-top: 120px; /* Space for fixed nav */
         }
 
-        /* Top Navigation (Consistent with Index) */
+        /* --- Unified Navigation --- */
         .top-nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 20px 5%;
             background: rgba(13, 15, 16, 0.85);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 2000;
-            box-sizing: border-box;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-logo { font-weight: 900; letter-spacing: 3px; color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; }
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; padding: 8px 12px; }
-        .nav-item:hover { color: var(--prim-teal); }
-        .nav-item.highlight { border: 1px solid rgba(0, 206, 206, 0.4); background: rgba(0, 206, 206, 0.05); color: #fff; border-radius: 4px; }
+        .nav-logo { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            color: #fff; 
+            text-decoration: none; 
+            font-size: 1.1rem; 
+            text-shadow: 0 0 10px rgba(0, 206, 206, 0.8);
+            transition: 0.3s ease;
+        }
 
-        /* Dossier Layout */
+        .nav-logo:hover {
+            color: var(--prim-teal);
+            text-shadow: 0 0 20px var(--prim-teal);
+        }
+
+        .nav-search-container {
+            flex-grow: 1;
+            max-width: 300px;
+            margin: 0 30px;
+        }
+
+        .nav-search-input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            color: #fff;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            outline: none;
+            border-radius: 4px;
+        }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        
+        .nav-item { 
+            color: var(--prim-silver); 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
+            transition: 0.3s; 
+        }
+
+        .nav-item:hover, .nav-item.active { color: var(--prim-teal); }
+
+        .nav-item.highlight { 
+            border: 1px solid rgba(0, 206, 206, 0.4); 
+            background: rgba(0, 206, 206, 0.05); 
+            color: #fff; 
+            padding: 8px 15px;
+            border-radius: 4px; 
+        }
+
+        /* --- Dossier Layout --- */
         .dossier-container {
-            max-width: 800px;
+            max-width: 850px;
             width: 90%;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-left: 4px solid var(--prim-teal);
-            padding: 40px;
+            padding: 50px;
             margin-bottom: 60px;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
 
         .dossier-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 30px;
             margin-bottom: 30px;
         }
 
         .subject-info h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
+            margin: 10px 0;
+            font-size: 2rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #fff;
         }
@@ -82,96 +135,108 @@
             font-size: 0.6rem;
             background: rgba(0, 206, 206, 0.1);
             color: var(--prim-teal);
-            padding: 4px 10px;
+            padding: 5px 12px;
             letter-spacing: 2px;
             font-weight: bold;
             border-radius: 2px;
+            display: inline-block;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border: 1px solid var(--prim-teal);
+            padding: 5px;
+            background: #000;
             object-fit: cover;
-            filter: grayscale(1) contrast(1.2);
-            margin-bottom: 20px;
+            filter: grayscale(1) contrast(1.1);
+            transition: 0.5s ease;
         }
 
-        .dossier-content h3 {
-            color: var(--prim-teal);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 30px;
-        }
-
-        .dossier-content p {
-            line-height: 1.8;
-            color: #aaa;
-            font-size: 0.95rem;
+        .profile-img:hover {
+            filter: grayscale(0);
+            box-shadow: 0 0 20px rgba(0, 206, 206, 0.3);
         }
 
         .data-point {
             display: flex;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 0.8rem;
         }
 
-        .label { color: #555; width: 120px; text-transform: uppercase; font-weight: bold; }
+        .label { color: #555; width: 100px; text-transform: uppercase; font-weight: bold; }
         .value { color: #fff; letter-spacing: 1px; }
+
+        /* --- Dossier Content --- */
+        .dossier-content h3 {
+            color: var(--prim-teal);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 35px 0 15px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .dossier-content h3::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: rgba(0, 206, 206, 0.2);
+            margin-left: 20px;
+        }
+
+        .dossier-content p {
+            line-height: 1.9;
+            color: #aaa;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
 
         .footer-note {
             margin-top: auto;
-            padding-bottom: 40px;
-            font-size: 0.6rem;
+            padding: 40px;
+            font-size: 0.65rem;
             color: #333;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
         }
 
-        @media (max-width: 600px) {
-            .dossier-header { flex-direction: column; gap: 20px; }
-            .dossier-container { padding: 20px; }
+        .return-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: var(--prim-teal);
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            opacity: 0.6;
         }
 
-        .nav-logo { 
-        font-weight: 900; 
-        letter-spacing: 5px; 
-        color: #fff; 
-        text-decoration: none; 
-        font-size: 1.1rem; 
-        flex-shrink: 0; 
-        text-shadow: 0 0 10px rgba(0, 206, 206, 0.8), 0 0 20px rgba(0, 206, 206, 0.4);
-        transition: 0.3s ease;
-        }
+        .return-link:hover { opacity: 1; transform: translateX(-5px); }
 
-.nav-logo:hover {
-    color: var(--prim-teal);
-    text-shadow: 0 0 15px rgba(0, 206, 206, 1), 0 0 30px rgba(0, 206, 206, 0.6);
-}
+        @media (max-width: 768px) {
+            .nav-search-container { display: none; }
+            .dossier-header { flex-direction: column-reverse; align-items: center; text-align: center; }
+            .profile-img { margin-bottom: 30px; }
+            .data-point { justify-content: center; }
+            .label { width: 80px; text-align: right; margin-right: 10px; }
+            .dossier-container { padding: 30px 20px; }
+        }
     </style>
 </head>
 <body>
 
-       <nav class="top-nav">
-        <!-- The Home Button -->
+    <nav class="top-nav">
         <a href="index.html" class="nav-logo">PrimLiQ</a>
-    
+        
         <div class="nav-search-container">
             <input type="text" class="nav-search-input" placeholder="SEARCH ASSETS..." id="armorySearch">
         </div>
 
         <div class="nav-links">
-            <a href="about.html" class="nav-item" target="_blank" rel="noopener noreferrer">About</a>
-            <a href="assets.html" class="nav-item highlight" target="_blank" rel="noopener noreferrer">Armory</a>
-            <a href="contact.html" class="nav-item" target="_blank" rel="noopener noreferrer">Contact</a>
-        </div>
-    </nav>
-
-    <nav class="top-nav">
-        <a href="index.html" class="nav-logo">PrimLiQ</a>
-        <div class="nav-links">
-            <a href="about.html" class="nav-item" style="color: var(--prim-teal);">About</a>
-            <a href="assets.html" class="nav-item highlight">The Armory</a>
+            <a href="about.html" class="nav-item active">About</a>
+            <a href="assets.html" class="nav-item highlight">Armory</a>
             <a href="contact.html" class="nav-item">Contact</a>
         </div>
     </nav>
@@ -181,15 +246,14 @@
             <div class="subject-info">
                 <span class="status-tag">ACTIVE AGENT // ALPHA SERIES</span>
                 <h1>Architect Bio</h1>
-                <div style="margin-top: 15px;">
+                <div style="margin-top: 20px;">
                     <div class="data-point"><span class="label">ID:</span> <span class="value">PLQ-001</span></div>
                     <div class="data-point"><span class="label">ROLE:</span> <span class="value">System Architect</span></div>
-                    <div class="data-point"><span class="label">HEIGHT:</span> <span class="value">6'0"</span></div>
+                    <div class="data-point"><span class="label">STATUS:</span> <span class="value">Operational</span></div>
                     <div class="data-point"><span class="label">LOC:</span> <span class="value">PrimLiQ Laboratory</span></div>
                 </div>
             </div>
-            <!-- Replace with your actual photo path -->
-            <img src="profile.png" alt="Architect" class="profile-img">
+            <img src="profile.png" alt="Architect Dossier Photo" class="profile-img">
         </div>
 
         <div class="dossier-content">
@@ -209,9 +273,7 @@
             </p>
         </div>
         
-        <div style="margin-top: 40px; border-top: 1px dashed #222; padding-top: 20px;">
-            <a href="index.html" style="color: var(--prim-teal); text-decoration: none; font-size: 0.7rem; letter-spacing: 2px;">[ RETURN TO MAIN INTERFACE ]</a>
-        </div>
+        <a href="index.html" class="return-link">[ RETURN TO MAIN INTERFACE ]</a>
     </div>
 
     <div class="footer-note">© 2026 PRIMLIQ | PERSONNEL RECORD | EST. 2024</div>
