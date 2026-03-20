@@ -190,6 +190,33 @@
         .top-nav { padding: 15px 20px; }
         .logo-img { width: 240px; }
     }
+
+    /* --- CUSTOM NEON SCROLLBAR --- */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0, 206, 206, 0.3); /* Subtle teal */
+        border-radius: 10px;
+        border: 2px solid var(--dark-bg); /* Creates a padding effect */
+        transition: 0.3s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--prim-teal); /* Bright glow on hover */
+        box-shadow: 0 0 10px var(--prim-teal);
+    }
+
+    /* Firefox Support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 206, 206, 0.3) var(--dark-bg);
+    }
     </style>
 </head>
 <body>
