@@ -36,7 +36,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* FIX: Increased padding-top to 120px to prevent Nav overlap */
         padding: 120px 20px 60px 20px; 
         animation: fadeIn 1.5s ease-out;
         overflow-x: hidden;
@@ -48,17 +47,21 @@
     }
 
     .container {
-        padding: 50px;
+        padding: 60px 50px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.02);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         max-width: 650px;
+        width: 100%;
         text-align: center;
         margin-bottom: 40px;
         box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .container:hover {
@@ -66,13 +69,15 @@
         box-shadow: 0 0 30px rgba(0, 206, 206, 0.15);
     }
 
-    .logo-img { width: 160px; margin-bottom: 15px; filter: drop-shadow(0 0 8px rgba(0, 206, 206, 0.4)); }
+    .logo-img { 
+        width: 320px; 
+        max-width: 100%;
+        margin-bottom: 30px; 
+        filter: drop-shadow(0 0 12px rgba(0, 206, 206, 0.4)); 
+    }
 
-    /* FIX: text-transform: none; to allow PrimLiQ casing */
-    h1 { color: #fff; letter-spacing: 6px; text-transform: none; margin-bottom: 5px; font-size: 2.2rem; font-weight: 800; }
+    h1, .tagline { display: none; }
 
-    .tagline { color: var(--prim-teal); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 30px; font-size: 0.75rem; }
-    
     .btn {
         display: inline-block;
         padding: 16px 40px;
@@ -146,10 +151,12 @@
     .footer-note { font-size: 0.7rem; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
 
     @media (max-width: 480px) {
-        h1 { font-size: 1.8rem; }
+        body { padding-top: 100px; }
+        .logo-img { width: 240px; }
         #primal-action-btn { right: 15px; bottom: 15px; width: calc(100% - 30px); text-align: center; }
     }
 
+    /* Vault and Nav Styles */
     .vault-container {
         max-width: 600px;
         margin: 40px auto;
@@ -160,131 +167,54 @@
         text-align: center;
     }
 
-    .vault-form {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+    .vault-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
     .vault-input {
-        flex: 1;
-        min-width: 250px;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        color: #fff;
-        font-family: inherit;
+        flex: 1; min-width: 250px; padding: 12px;
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px; color: #fff; font-family: inherit;
     }
 
-    .vault-input:focus {
-        outline: none;
-        border-color: var(--prim-teal);
-    }
+    .vault-input:focus { outline: none; border-color: var(--prim-teal); }
 
     .vault-btn {
-        padding: 12px 25px;
-        background: var(--prim-teal);
-        color: #000;
-        border: none;
-        border-radius: 4px;
-        font-weight: 900;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        letter-spacing: 1px;
+        padding: 12px 25px; background: var(--prim-teal); color: #000;
+        border: none; border-radius: 4px; font-weight: 900; cursor: pointer;
+        transition: all 0.3s ease; letter-spacing: 1px;
     }
 
-    .vault-btn:hover {
-        background: #fff;
-        box-shadow: 0 0 15px rgba(0, 206, 206, 0.4);
-    }
-
-    /* TOP NAVIGATION BAR */
     .top-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 40px;
-        background: rgba(13, 15, 16, 0.95); /* Increased opacity slightly for readability */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        z-index: 9999; /* Higher Z-index to ensure it sits above everything */
-        box-sizing: border-box;
-        border-bottom: 1px solid rgba(0, 206, 206, 0.15);
+        position: fixed; top: 0; left: 0; width: 100%;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 40px; background: rgba(13, 15, 16, 0.95);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.15);
     }
 
-    /* FIX: text-transform: none; to allow PrimLiQ casing */
-    .nav-logo {
-        font-weight: 900;
-        letter-spacing: 3px;
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.9rem;
-        text-transform: none; 
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 25px;
-    }
-
-    .nav-item {
-        color: var(--prim-silver);
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        transition: all 0.3s ease;
-        padding: 8px 12px;
-        border-radius: 4px;
-    }
-
-    .nav-item:hover {
-        color: var(--prim-teal);
-        text-shadow: 0 0 8px rgba(0, 206, 206, 0.5);
-    }
-
-    .nav-item.highlight {
-        border: 1px solid rgba(0, 206, 206, 0.3);
-        background: rgba(0, 206, 206, 0.05);
-    }
-
-    .nav-item.highlight:hover {
-        background: var(--prim-teal);
-        color: #000;
-        box-shadow: 0 0 15px rgba(0, 206, 206, 0.3);
-    }
-
-    @media (max-width: 480px) {
-        .top-nav { padding: 15px 20px; }
-        .nav-links { gap: 10px; }
-        .nav-item { font-size: 0.6rem; padding: 5px 8px; }
-        body { padding-top: 100px; } /* Adjust mobile padding */
-    }
+    .nav-logo { font-weight: 900; letter-spacing: 3px; color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: none; }
+    .nav-links { display: flex; gap: 25px; }
+    .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: all 0.3s ease; padding: 8px 12px; border-radius: 4px; }
+    .nav-item:hover { color: var(--prim-teal); text-shadow: 0 0 8px rgba(0, 206, 206, 0.5); }
+    .nav-item.highlight { border: 1px solid rgba(0, 206, 206, 0.3); background: rgba(0, 206, 206, 0.05); }
+    .nav-item.highlight:hover { background: var(--prim-teal); color: #000; box-shadow: 0 0 15px rgba(0, 206, 206, 0.3); }
 </style>
 </head>
 <body>
 
     <!-- TOP NAVIGATION -->
     <nav class="top-nav">
-        <a href="#hero-section" class="nav-logo">PrimLiQ</a>
+        <a href="https://primliq.github.io/PLQ/" class="nav-logo">PrimLiQ</a>
         <div class="nav-links">
-            <a href="about.html" target="_blank" rel="noopener noreferrer" class="nav-item">About</a>
-            <a href="assets.html" target="_blank" rel="noopener noreferrer" class="nav-item highlight">The Armory</a>
-            <a href="contact.html" target="_blank" rel="noopener noreferrer" class="nav-item">Contact</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="assets.html" class="nav-item highlight">The Armory</a>
+            <a href="contact.html" class="nav-item">Contact</a>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
     <div class="container" id="hero-section">
         <img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
-        <h1 style="text-transform: none;">PrimLiQ</h1> <!-- Corrected Casing -->
+        <h1 style="text-transform: none;">PrimLiQ</h1>
         <p class="tagline">Primal Drive. Unique Edge. IQ Executed.</p>
         <a href="contact.html" class="btn" target="_blank" rel="noopener noreferrer">GET IN TOUCH</a>
     </div>
@@ -338,7 +268,7 @@
 
     <!-- JOIN THE VAULT (LEAD CAPTURE) -->
     <div class="section-title">The Primal Vault</div>
-    <div class="vault-container" style="width: 100%;"> <!-- Added width for layout safety -->
+    <div class="vault-container" style="width: 100%;">
         <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px; text-align: center;">
             Get high-level tactical updates, exclusive Notion templates, and the "Alpha Series" roadmap.
         </p>
