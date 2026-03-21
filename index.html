@@ -32,16 +32,16 @@
         flex-direction: column;
         align-items: center;
         padding: 120px 20px 60px 20px; 
-        animation: fadeIn 1.5s ease-out;
+        animation: fadeIn 1.2s ease-out;
         overflow-x: hidden;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
+        from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- NAVIGATION MASCOT (VIDEO INTEGRATION) --- */
+    /* --- MASCOT (STATIONARY VIDEO) --- */
     .mascot-container {
         position: fixed;
         bottom: 30px;
@@ -51,32 +51,17 @@
         flex-direction: column;
         align-items: center;
         pointer-events: none;
-        transition: 0.5s ease;
+        transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .nav-mascot {
-        width: 120px; /* Increased slightly for video clarity */
+        width: 120px;
         filter: drop-shadow(var(--neon-glow));
-        animation: floatMascot 4s ease-in-out infinite;
         object-fit: contain;
+        /* Animation removed to keep mascot stationary */
     }
 
-    .mascot-status {
-        font-size: 0.5rem;
-        color: var(--prim-teal);
-        letter-spacing: 2px;
-        font-weight: 900;
-        margin-top: 8px;
-        text-shadow: 0 0 10px var(--prim-teal);
-        opacity: 0.8;
-    }
-
-    @keyframes floatMascot {
-        0%, 100% { transform: translateY(0) rotate(-2deg); }
-        50% { transform: translateY(-15px) rotate(3deg); }
-    }
-
-    /* --- LOGO & CARD ENHANCEMENTS --- */
+    /* --- LOGO & CARD --- */
     .branding-card {
         position: relative;
         padding: 60px 50px; 
@@ -108,19 +93,15 @@
         max-width: 100%; 
         margin-bottom: 30px; 
         filter: drop-shadow(0 0 15px rgba(0, 206, 206, 0.5));
-        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .logo-img:hover {
-        transform: scale(1.05);
+        transform: scale(1.03);
         filter: drop-shadow(0 0 25px rgba(0, 206, 206, 0.8));
     }
 
-    .nav-logo { 
-        font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; font-size: 1.1rem; 
-        text-shadow: 0 0 10px rgba(0, 206, 206, 0.8);
-    }
-
+    /* --- HUD & NAV --- */
     .side-hud {
         position: fixed; top: 50%; transform: translateY(-50%);
         width: 120px; height: 400px; display: flex; flex-direction: column;
@@ -136,34 +117,37 @@
         display: flex; justify-content: space-between; align-items: center;
         padding: 12px 40px; background: rgba(13, 15, 16, 0.9);
         backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-        z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.25);
+        z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.15);
     }
+
+    .nav-logo { font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; font-size: 1.1rem; text-shadow: 0 0 10px rgba(0, 206, 206, 0.8); }
 
     .nav-search-container { position: relative; flex-grow: 1; max-width: 400px; margin: 0 30px; }
     .nav-search-input {
         width: 100%; padding: 8px 15px 8px 35px; background: var(--glass);
         border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px;
-        color: #fff; font-size: 0.8rem; transition: all 0.3s ease;
+        color: #fff; font-size: 0.8rem; transition: 0.3s;
     }
-    .nav-search-input:focus { outline: none; border-color: var(--prim-teal); background: rgba(0, 206, 206, 0.05); box-shadow: 0 0 15px rgba(0, 206, 206, 0.1); }
+    .nav-search-input:focus { outline: none; border-color: var(--prim-teal); background: rgba(0, 206, 206, 0.05); }
     .nav-search-container::before {
-        content: '\f002'; font-family: "Font Awesome 5 Free"; font-weight: 900;
+        content: '\f002'; font-family: "Font Awesome 6 Free"; font-weight: 900;
         position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
         color: var(--prim-teal); font-size: 0.8rem; opacity: 0.6;
     }
 
-    .nav-links { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-item { color: var(--prim-silver); text-decoration: none; text-transform: uppercase; font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; padding: 6px 10px; }
     .nav-item:hover { color: var(--prim-teal); text-shadow: var(--neon-glow); }
     .nav-item.highlight { border: 1px solid rgba(0, 206, 206, 0.3); background: rgba(0, 206, 206, 0.05); border-radius: 4px; }
 
+    /* --- UI ELEMENTS --- */
     .btn {
         display: inline-block; padding: 16px 40px;
         background: linear-gradient(135deg, #fff 0%, var(--prim-silver) 100%);
         color: #000 !important; text-decoration: none; font-weight: 900; border-radius: 4px;
-        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-transform: uppercase; letter-spacing: 2px;
+        transition: 0.3s ease; text-transform: uppercase; letter-spacing: 2px;
     }
-    .btn:hover { background: var(--prim-teal); color: #fff !important; transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 206, 206, 0.5); }
+    .btn:hover { background: var(--prim-teal); color: #fff !important; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 206, 206, 0.3); }
 
     .section-title {
         text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; margin: 60px 0 30px 0;
@@ -175,10 +159,10 @@
     
     .service-card {
         padding: 30px; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255, 255, 255, 0.01);
-        border-radius: 12px; transition: 0.3s ease; position: relative; overflow: hidden;
+        border-radius: 12px; transition: 0.3s ease; position: relative;
     }
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--prim-teal); opacity: 0.5; }
-    .service-card:hover { background: rgba(0, 206, 206, 0.03); border-color: var(--prim-teal); transform: translateY(-8px); }
+    .service-card:hover { background: rgba(0, 206, 206, 0.03); border-color: var(--prim-teal); transform: translateY(-5px); }
     .service-card h3 { color: #fff; margin-top: 10px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
 
     .vault-container {
@@ -197,6 +181,7 @@
     #primal-action-btn.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .footer-note { font-size: 0.7rem; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
 
+    /* --- RESPONSIVE --- */
     @media (max-width: 1024px) { 
         .side-hud { display: none; } 
         .mascot-container { left: 20px; bottom: 20px; }
@@ -206,31 +191,19 @@
         .nav-search-container { display: none; }
         .top-nav { padding: 15px 20px; }
         .logo-img { width: 240px; }
-        .mascot-container { display: none; } /* Better UX for mobile */
+        .mascot-container { display: none; }
     }
 
-    /* --- CUSTOM NEON SCROLLBAR --- */
+    /* --- SCROLLBAR --- */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--dark-bg); }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(0, 206, 206, 0.3);
-        border-radius: 10px;
-        border: 2px solid var(--dark-bg);
-        transition: 0.3s;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: var(--prim-teal);
-        box-shadow: 0 0 10px var(--prim-teal);
-    }
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: rgba(0, 206, 206, 0.3) var(--dark-bg);
-    }
+    ::-webkit-scrollbar-thumb { background: rgba(0, 206, 206, 0.3); border-radius: 10px; border: 2px solid var(--dark-bg); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--prim-teal); }
     </style>
 </head>
 <body>
 
-    <!-- MASCOT COMPANION (Container for video + status) -->
+    <!-- MASCOT COMPANION (Looping Video Only) -->
     <div class="mascot-container">
         <video autoplay loop muted playsinline class="nav-mascot">
             <source src="mascot.mp4" type="video/mp4">
@@ -341,7 +314,6 @@
                 entries.forEach(entry => {
                     actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
                     mascotContainer.style.opacity = entry.isIntersecting ? "1" : "0.7";
-                    mascotContainer.style.transform = entry.isIntersecting ? "scale(1)" : "scale(0.85)";
                 });
             }, { threshold: 0.1 });
             observer.observe(portalSection);
@@ -351,7 +323,7 @@
 
             searchInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
-                    window.location.href = 'assets.html?search=' + searchInput.value;
+                    window.location.href = 'assets.html?search=' + encodeURIComponent(searchInput.value);
                 }
             });
 
