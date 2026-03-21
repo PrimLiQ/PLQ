@@ -41,18 +41,34 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- NAVIGATION MASCOT (VIDEO SUPPORT) --- */
-    .nav-mascot {
+    /* --- NAVIGATION MASCOT (VIDEO INTEGRATION) --- */
+    .mascot-container {
         position: fixed;
         bottom: 30px;
         left: 40px;
-        width: 100px;
         z-index: 10000;
-        filter: drop-shadow(var(--neon-glow));
-        animation: floatMascot 4s ease-in-out infinite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         pointer-events: none;
         transition: 0.5s ease;
-        object-fit: contain; /* Ensures video scaling is clean */
+    }
+
+    .nav-mascot {
+        width: 120px; /* Increased slightly for video clarity */
+        filter: drop-shadow(var(--neon-glow));
+        animation: floatMascot 4s ease-in-out infinite;
+        object-fit: contain;
+    }
+
+    .mascot-status {
+        font-size: 0.5rem;
+        color: var(--prim-teal);
+        letter-spacing: 2px;
+        font-weight: 900;
+        margin-top: 8px;
+        text-shadow: 0 0 10px var(--prim-teal);
+        opacity: 0.8;
     }
 
     @keyframes floatMascot {
@@ -183,36 +199,29 @@
 
     @media (max-width: 1024px) { 
         .side-hud { display: none; } 
-        .nav-mascot { width: 60px; left: 20px; bottom: 20px; }
+        .mascot-container { left: 20px; bottom: 20px; }
+        .nav-mascot { width: 80px; }
     }
     @media (max-width: 768px) {
         .nav-search-container { display: none; }
         .top-nav { padding: 15px 20px; }
         .logo-img { width: 240px; }
+        .mascot-container { display: none; } /* Better UX for mobile */
     }
 
     /* --- CUSTOM NEON SCROLLBAR --- */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: var(--dark-bg);
-    }
-
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--dark-bg); }
     ::-webkit-scrollbar-thumb {
-        background: rgba(0, 206, 206, 0.3); /* Subtle teal */
+        background: rgba(0, 206, 206, 0.3);
         border-radius: 10px;
-        border: 2px solid var(--dark-bg); /* Creates a padding effect */
+        border: 2px solid var(--dark-bg);
         transition: 0.3s;
     }
-
     ::-webkit-scrollbar-thumb:hover {
-        background: var(--prim-teal); /* Bright glow on hover */
+        background: var(--prim-teal);
         box-shadow: 0 0 10px var(--prim-teal);
     }
-
-    /* Firefox Support */
     * {
         scrollbar-width: thin;
         scrollbar-color: rgba(0, 206, 206, 0.3) var(--dark-bg);
@@ -221,10 +230,13 @@
 </head>
 <body>
 
-    <!-- MASCOT COMPANION (Changed to Video) -->
-    <video autoplay loop muted playsinline class="nav-mascot">
-        <source src="mascot.mp4" type="video/mp4">
-    </video>
+    <!-- MASCOT COMPANION (Container for video + status) -->
+    <div class="mascot-container">
+        <video autoplay loop muted playsinline class="nav-mascot">
+            <source src="mascot.mp4" type="video/mp4">
+        </video>
+        <div class="mascot-status">LINKED.AI</div>
+    </div>
 
     <div class="side-hud hud-left">
         <div class="hud-line">System.Status: Active</div>
@@ -239,13 +251,10 @@
     </div>
 
     <nav class="top-nav">
-        <!-- Home Button Links to main site (Removed target="_blank") -->
         <a href="https://primliq.github.io/PLQ/" class="nav-logo">PrimLiQ</a>
-
         <div class="nav-search-container">
             <input type="text" class="nav-search-input" placeholder="SEARCH DATABASE..." id="armorySearch">
         </div>
-
         <div class="nav-links">
             <a href="about.html" class="nav-item">About</a>
             <a href="assets.html" class="nav-item highlight">Armory</a>
@@ -255,7 +264,6 @@
 
     <div class="branding-card" id="main-portal">
         <img src="logo.png" alt="PrimLiQ Logo" class="logo-img">
-        <!-- target="_blank" removed -->
         <a href="contact.html" class="btn">GET IN TOUCH</a>
     </div>
 
@@ -290,7 +298,6 @@
             <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">COLLECTION</span>
             <h3>THE ARMORY</h3>
             <p style="font-size: 0.85rem; color:#888;">Explore our master vault of gamified systems and Notion templates.</p>
-            <!-- target="_blank" removed -->
             <a href="assets.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">ENTER THE ARMORY</a>
         </div>
         <div class="service-card">
@@ -300,7 +307,6 @@
             <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">INTELLECT</span>
             <h3>Custom Automations</h3>
             <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
-            <!-- target="_blank" removed -->
             <a href="contact.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
         </div>
     </div>
@@ -322,7 +328,6 @@
         <a href="https://tiktok.com/@primliq"><i class="fab fa-tiktok"></i></a>
     </div>
 
-    <!-- Floating button target removed -->
     <a href="contact.html" id="primal-action-btn" class="btn">GET IN TOUCH</a>
 
     <div class="footer-note">© 2026 PRIMLIQ | ALPHA SERIES | EST. 2024</div>
@@ -331,13 +336,13 @@
         document.addEventListener("DOMContentLoaded", () => {
             const actionBtn = document.querySelector("#primal-action-btn");
             const portalSection = document.querySelector("#main-portal");
-            const mascot = document.querySelector(".nav-mascot");
+            const mascotContainer = document.querySelector(".mascot-container");
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
-                    mascot.style.opacity = entry.isIntersecting ? "1" : "0.7";
-                    mascot.style.transform = entry.isIntersecting ? "scale(1)" : "scale(0.8)";
+                    mascotContainer.style.opacity = entry.isIntersecting ? "1" : "0.7";
+                    mascotContainer.style.transform = entry.isIntersecting ? "scale(1)" : "scale(0.85)";
                 });
             }, { threshold: 0.1 });
             observer.observe(portalSection);
@@ -345,7 +350,6 @@
             const searchInput = document.getElementById('armorySearch');
             const cards = document.querySelectorAll('.service-card');
 
-            // Opens results in SAME window (Removed window.open)
             searchInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     window.location.href = 'assets.html?search=' + searchInput.value;
