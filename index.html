@@ -15,7 +15,7 @@
         --prim-silver: #a8a8a8;
         --dark-bg: #0d0f10;
         --glass: rgba(255, 255, 255, 0.03);
-        --neon-glow: 0 0 20px rgba(0, 206, 206, 0.4);
+        --neon-glow: 0 0 15px rgba(0, 206, 206, 0.6);
     }
 
     body {
@@ -100,7 +100,19 @@
         z-index: 9999; box-sizing: border-box; border-bottom: 1px solid rgba(0, 206, 206, 0.15);
     }
 
-    .nav-logo { font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; font-size: 1.1rem; text-shadow: 0 0 10px rgba(0, 206, 206, 0.8); }
+    .nav-logo { 
+        font-weight: 900; 
+        letter-spacing: 5px; 
+        color: #fff; 
+        text-decoration: none; 
+        font-size: 1.1rem; 
+        text-shadow: 0 0 10px rgba(0, 206, 206, 0.8);
+        transition: 0.3s;
+    }
+    .nav-logo:hover {
+        color: var(--prim-teal);
+        text-shadow: var(--neon-glow);
+    }
 
     .nav-search-container { position: relative; flex-grow: 1; max-width: 400px; margin: 0 30px; }
     .nav-search-input {
@@ -145,13 +157,31 @@
     .service-card:hover { background: rgba(0, 206, 206, 0.03); border-color: var(--prim-teal); transform: translateY(-5px); }
     .service-card h3 { color: #fff; margin-top: 10px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
 
+    /* --- VAULT SECTION --- */
     .vault-container {
         max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid rgba(0, 206, 206, 0.2);
         border-radius: 12px; background: rgba(0, 206, 206, 0.02); text-align: center;
     }
     .vault-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .vault-input { flex: 1; min-width: 200px; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: #fff; }
-    .vault-btn { padding: 12px 25px; background: var(--prim-teal); color: #000; border: none; border-radius: 4px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+    .vault-btn { 
+        padding: 12px 25px; 
+        background: var(--prim-teal); 
+        color: #000; 
+        border: none; 
+        border-radius: 4px; 
+        font-weight: 900; 
+        cursor: pointer; 
+        transition: 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 0 10px rgba(0, 206, 206, 0.2);
+    }
+    .vault-btn:hover {
+        background: #fff;
+        box-shadow: var(--neon-glow);
+        transform: translateY(-1px);
+    }
 
     .social-links { display: flex; justify-content: center; gap: 35px; margin: 80px 0; width: 100%; }
     .social-links a { color: #fff; font-size: 1.5rem; transition: 0.3s; }
