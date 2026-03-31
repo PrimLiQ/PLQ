@@ -147,10 +147,6 @@
     }
 
     .philosophy-text { max-width: 600px; line-height: 1.8; color: #a0a0a0; text-align: center; margin-bottom: 30px; font-size: 1.05rem; }
-    
-    /* Search-friendly wrapper */
-    .search-content-block { width: 100%; display: flex; flex-direction: column; align-items: center; }
-
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 850px; width: 100%; }
     
     .service-card {
@@ -161,6 +157,7 @@
     .service-card:hover { background: rgba(0, 206, 206, 0.03); border-color: var(--prim-teal); transform: translateY(-5px); }
     .service-card h3 { color: #fff; margin-top: 10px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
 
+    /* --- VAULT SECTION --- */
     .vault-container {
         max-width: 600px; margin: 40px auto; padding: 30px; border: 1px solid rgba(0, 206, 206, 0.2);
         border-radius: 12px; background: rgba(0, 206, 206, 0.02); text-align: center;
@@ -168,10 +165,23 @@
     .vault-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .vault-input { flex: 1; min-width: 200px; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; color: #fff; }
     .vault-btn { 
-        padding: 12px 25px; background: var(--prim-teal); color: #000; border: none; border-radius: 4px; font-weight: 900; cursor: pointer; transition: 0.3s;
-        text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 10px rgba(0, 206, 206, 0.2);
+        padding: 12px 25px; 
+        background: var(--prim-teal); 
+        color: #000; 
+        border: none; 
+        border-radius: 4px; 
+        font-weight: 900; 
+        cursor: pointer; 
+        transition: 0.3s;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 0 10px rgba(0, 206, 206, 0.2);
     }
-    .vault-btn:hover { background: #fff; box-shadow: var(--neon-glow); transform: translateY(-1px); }
+    .vault-btn:hover {
+        background: #fff;
+        box-shadow: var(--neon-glow);
+        transform: translateY(-1px);
+    }
 
     .social-links { display: flex; justify-content: center; gap: 35px; margin: 80px 0; width: 100%; }
     .social-links a { color: #fff; font-size: 1.5rem; transition: 0.3s; }
@@ -182,7 +192,9 @@
     .footer-note { font-size: 0.7rem; color: #444; margin-top: 40px; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
 
     /* --- RESPONSIVE --- */
-    @media (max-width: 1024px) { .side-hud { display: none; } }
+    @media (max-width: 1024px) { 
+        .side-hud { display: none; } 
+    }
     @media (max-width: 768px) {
         .nav-search-container { display: none; }
         .top-nav { padding: 15px 20px; }
@@ -227,61 +239,59 @@
         <a href="contact.html" class="btn">GET IN TOUCH</a>
     </div>
 
-    <div class="search-content-block" id="searchableArea">
-        <div class="section-title">The Mission</div>
-        <p class="philosophy-text">
-            Modern brilliance is hollow without ancestral drive. PrimLiQ bridges the gap—combining the <span style="color:var(--prim-teal)">raw, guttural instinct</span> to succeed with the <span style="color:#fff">cold, calculated precision</span> of high-level strategy.
+    <div class="section-title">The Mission</div>
+    <p class="philosophy-text">
+        Modern brilliance is hollow without ancestral drive. PrimLiQ bridges the gap—combining the <span style="color:var(--prim-teal)">raw, guttural instinct</span> to succeed with the <span style="color:#fff">cold, calculated precision</span> of high-level strategy.
+    </p>
+
+    <div class="section-title">The Roadmap</div>
+    <div class="services">
+        <div class="service-card">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">01. AUDIT</span>
+            <h3>INSTINCT</h3>
+            <p style="font-size: 0.85rem; color:#888;">Identifying raw strengths and stripping noise that limits your potential.</p>
+        </div>
+        <div class="service-card">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">02. STRATEGY</span>
+            <h3>INTELLECT</h3>
+            <p style="font-size: 0.85rem; color:#888;">Designing tactical frameworks to channel energy into execution.</p>
+        </div>
+        <div class="service-card" style="grid-column: span 2;">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">03. RESULT</span>
+            <h3>DOMINANCE</h3>
+            <p style="font-size: 0.85rem; color:#888;">Consistent, calculated high-performance merging natural drive with logic.</p>
+        </div>
+    </div>
+
+    <div class="section-title">Digital Assets & Tools</div>
+    <div class="services">
+        <div class="service-card">
+            <img src="armory-preview.png" alt="PrimLiQ Armory" style="width:100%; border-radius:8px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1);">
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">COLLECTION</span>
+            <h3>THE ARMORY</h3>
+            <p style="font-size: 0.85rem; color:#888;">Explore our master vault of gamified systems and Notion templates.</p>
+            <a href="assets.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">ENTER THE ARMORY</a>
+        </div>
+        <div class="service-card">
+            <div style="width:100%; height:150px; background: rgba(255,255,255,0.05); border-radius:8px; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px dashed #333;">
+                <span style="color:#444; font-size: 0.8rem;">[ DEVELOPMENT ]</span>
+            </div>
+            <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">INTELLECT</span>
+            <h3>Custom Automations</h3>
+            <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
+            <a href="contact.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
+        </div>
+    </div>
+
+    <div class="section-title">The Primal Vault</div>
+    <div class="vault-container" style="width: 100%;">
+        <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px;">
+            Get high-level tactical updates and the "Alpha Series" roadmap.
         </p>
-
-        <div class="section-title">The Roadmap</div>
-        <div class="services">
-            <div class="service-card">
-                <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">01. AUDIT</span>
-                <h3>INSTINCT</h3>
-                <p style="font-size: 0.85rem; color:#888;">Identifying raw strengths and stripping noise that limits your potential.</p>
-            </div>
-            <div class="service-card">
-                <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">02. STRATEGY</span>
-                <h3>INTELLECT</h3>
-                <p style="font-size: 0.85rem; color:#888;">Designing tactical frameworks to channel energy into execution.</p>
-            </div>
-            <div class="service-card" style="grid-column: span 2;">
-                <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">03. RESULT</span>
-                <h3>DOMINANCE</h3>
-                <p style="font-size: 0.85rem; color:#888;">Consistent, calculated high-performance merging natural drive with logic.</p>
-            </div>
-        </div>
-
-        <div class="section-title">Digital Assets & Tools</div>
-        <div class="services">
-            <div class="service-card">
-                <img src="armory-preview.png" alt="PrimLiQ Armory" style="width:100%; border-radius:8px; margin-bottom:15px; border:1px solid rgba(255,255,255,0.1);">
-                <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">COLLECTION</span>
-                <h3>THE ARMORY</h3>
-                <p style="font-size: 0.85rem; color:#888;">Explore our master vault of gamified systems and Notion templates.</p>
-                <a href="assets.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">ENTER THE ARMORY</a>
-            </div>
-            <div class="service-card">
-                <div style="width:100%; height:150px; background: rgba(255,255,255,0.05); border-radius:8px; margin-bottom:15px; display:flex; align-items:center; justify-content:center; border:1px dashed #333;">
-                    <span style="color:#444; font-size: 0.8rem;">[ DEVELOPMENT ]</span>
-                </div>
-                <span style="color: var(--prim-teal); font-weight: bold; font-size: 0.7rem;">INTELLECT</span>
-                <h3>Custom Automations</h3>
-                <p style="font-size: 0.85rem; color:#888;">Bespoke Notion or CLI builds.</p>
-                <a href="contact.html" class="btn" style="padding: 8px 15px; font-size: 0.7rem; margin-top: 10px;">Inquire Here</a>
-            </div>
-        </div>
-
-        <div class="section-title">The Primal Vault</div>
-        <div class="vault-container" style="width: 100%;">
-            <p style="color: #888; font-size: 0.85rem; margin-bottom: 20px;">
-                Get high-level tactical updates and the "Alpha Series" roadmap.
-            </p>
-            <form action="https://formspree.io/f/meerpnnq" method="POST" class="vault-form">
-                <input type="email" name="email" class="vault-input" placeholder="ENTER EMAIL" required>
-                <button type="submit" class="vault-btn">JOIN VAULT</button>
-            </form>
-        </div>
+        <form action="https://formspree.io/f/meerpnnq" method="POST" class="vault-form">
+            <input type="email" name="email" class="vault-input" placeholder="ENTER EMAIL" required>
+            <button type="submit" class="vault-btn">JOIN VAULT</button>
+        </form>
     </div>
 
     <div class="social-links">
@@ -296,12 +306,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // UI Controls
             const actionBtn = document.querySelector("#primal-action-btn");
             const portalSection = document.querySelector("#main-portal");
-            const searchInput = document.getElementById('armorySearch');
             
-            // Observer for floating button
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     actionBtn.classList.toggle("is-visible", !entry.isIntersecting);
@@ -309,42 +316,25 @@
             }, { threshold: 0.1 });
             observer.observe(portalSection);
 
-            // GLOBAL SEARCH LOGIC
-            const searchTargets = [
-                ...document.querySelectorAll('.service-card'),
-                ...document.querySelectorAll('.philosophy-text'),
-                ...document.querySelectorAll('.vault-container'),
-                ...document.querySelectorAll('.section-title')
-            ];
+            const searchInput = document.getElementById('armorySearch');
+            const cards = document.querySelectorAll('.service-card');
 
-            searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                
-                if (term.length > 0) {
-                    searchTargets.forEach(el => {
-                        const content = el.innerText.toLowerCase();
-                        // If it matches, show it. If not, hide it.
-                        if (content.includes(term)) {
-                            el.style.display = "";
-                            el.style.opacity = "1";
-                        } else {
-                            el.style.display = "none";
-                        }
-                    });
-                } else {
-                    // Reset everything if search is empty
-                    searchTargets.forEach(el => {
-                        el.style.display = "";
-                        el.style.opacity = "1";
-                    });
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    window.location.href = 'assets.html?search=' + encodeURIComponent(searchInput.value);
                 }
             });
 
-            // Redirect to Armory page on Enter key
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && searchInput.value.length > 0) {
-                    window.location.href = 'assets.html?search=' + encodeURIComponent(searchInput.value);
-                }
+            searchInput.addEventListener('input', (e) => {
+                const value = e.target.value.toLowerCase();
+                cards.forEach(card => {
+                    const h3 = card.querySelector('h3');
+                    if(h3) {
+                        const title = h3.innerText.toLowerCase();
+                        const desc = card.querySelector('p').innerText.toLowerCase();
+                        card.style.display = (title.includes(value) || desc.includes(value)) ? "block" : "none";
+                    }
+                });
             });
         });
     </script>
